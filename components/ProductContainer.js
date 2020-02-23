@@ -1,12 +1,21 @@
 import React from 'react'
-import {StyleSheet, View, Text} from 'react-native'
+import { StyleSheet, View, Image } from "react-native";
+import BodyText from '../components/BodyText'
 
 import colors from '../constants/colors'
 
 const ProductContainer = props => {
     return (
       <View style={styles.container}>
-        <Text style={styles.product}>{props.children}</Text>
+        <Image
+          style={styles.image}
+          source={{
+            uri:
+              "https://static.netshoes.com.br/produtos/whey-protein-100-whey-gold-standard-2-lbs-optimum-nutrition/99/165-7007-799/165-7007-799_zoom1.jpg?ims=652x"
+          }}
+          resizeMode="cover"
+        />
+        <BodyText style={styles.product}>{props.children}</BodyText>
       </View>
     );
 }
@@ -22,8 +31,11 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   product: {
-    color: colors.accent,
-    fontSize: 22
+    color: colors.accent
+  },
+  image: {
+    width: 100,
+    height: 100
   }
 });
 

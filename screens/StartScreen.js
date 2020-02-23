@@ -12,6 +12,8 @@ import {
 import Card from "../components/Card";
 import ProductContainer from "../components/ProductContainer";
 import Input from "../components/Input";
+import TitleText from "../components/TitleText";
+import BodyText from "../components/BodyText";
 import colors from "../constants/colors";
 
 const StartScreen = props => {
@@ -37,7 +39,7 @@ const StartScreen = props => {
   if(confirmed) {
     confirmedOutput = (
       <Card style={styles.sumaryContainer}>
-        <Text>Selected Product:</Text>
+        <BodyText>Selected Product:</BodyText>
         <ProductContainer>{selectedProduct}</ProductContainer>
         <Button title="Me leve para a loja" color={colors.accent} onPress={() => props.onSearch(selectedProduct)} />
       </Card>
@@ -47,9 +49,9 @@ const StartScreen = props => {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.screen}>
-        <Text style={styles.title}>O melhor app de Suplementos</Text>
+        <TitleText style={styles.title}>O melhor app de Suplementos</TitleText>
         <Card>
-          <Text>O que está procurando?</Text>
+          <BodyText>O que está procurando?</BodyText>
           <Input
             style={styles.input}
             blurOnSubmit
@@ -87,17 +89,16 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     alignItems: "center",
-    justifyContent: "flex-start",
-    fontSize: 15
+    justifyContent: "flex-start"
   },
   title: {
-    fontSize: 20,
     marginVertical: 10
   },
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
-    width: "100%"
+    width: "100%",
+    marginTop: 15
   },
   button: {
     width: 100
