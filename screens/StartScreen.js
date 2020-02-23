@@ -5,10 +5,12 @@ import {
   Text,
   TouchableWithoutFeedback,
   Button,
-  Keyboard
+  Keyboard,
+  Alert
 } from "react-native";
 
 import Card from "../components/Card";
+import ProductContainer from "../components/ProductContainer";
 import Input from "../components/Input";
 import colors from "../constants/colors";
 
@@ -23,16 +25,23 @@ const StartScreen = props => {
   const resetInputHandler = () => {
     setEnteredValue('');
   };
-  const confirmInputHandler = inputText => {
+  const confirmInputHandler = () => {
     setConfirmedValue(true);
     setSelectedProduct(enteredValue);
     setEnteredValue('');
+    Keyboard.dismiss();
   };
 
   let confirmedOutput;
 
   if(confirmed) {
-    confirmedOutput = <Text>Chosen Product: {selectedProduct}</Text>
+    confirmedOutput = (
+      <Card style={styles.sumaryContainer}>
+        <Text>Selected Product:</Text>
+        <ProductContainer>{selectedProduct}</ProductContainer>
+        <Button title="Me leve para a loja" color={colors.accent} onPress={() => props.onSearch(selectedProduct)} />
+      </Card>
+    );
   }
   
   return (
@@ -96,6 +105,9 @@ const styles = StyleSheet.create({
   input: {
     width: 150,
     textAlign: "center"
+  },
+  sumaryContainer: {
+    marginVertical: 20
   }
 });
 
