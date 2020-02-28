@@ -3,6 +3,7 @@ import { StyleSheet, View, Button, Image } from "react-native";
 
 import Card from "../components/Card";
 import colors from "../constants/colors";
+import MainButton from "../components/MainButton";
 import TitleText from "../components/TitleText";
 
 const EndScreen = props => {
@@ -16,13 +17,7 @@ const EndScreen = props => {
           resizeMode="cover"
         />
       </View>
-      <Card style={styles.buttonContainer}>
-        <Button
-          title="Fazer nova busca"
-          onPress={props.onRestart}
-          color={colors.primary}
-        />
-      </Card>
+      <MainButton onPress={props.onRestart}>Fazer nova busca</MainButton>
     </View>
   );
 };

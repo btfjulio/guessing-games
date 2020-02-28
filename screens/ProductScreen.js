@@ -3,16 +3,18 @@ import {
   StyleSheet,
   View,
   Text,
-  Button,
   Alert
 } from "react-native";
 
+
 import Card from "../components/Card";
 import ProductContainer from "../components/ProductContainer";
+import MainButton from "../components/MainButton";
 import colors from "../constants/colors";
 
 const ProductScreen = props => {
   const [currentProduct, setCurrentProduct] = useState(props.userSearch);
+
   const copyCupomHandler = async cupomText => {
         Alert.alert('Cupom copiado com sucesso!', this.cupomText);
         props.onEndSearch(true);
@@ -23,9 +25,9 @@ const ProductScreen = props => {
       <Text style={styles.title}>O melhor app de Suplementos</Text>
       <ProductContainer>{currentProduct}</ProductContainer>
       <Card style={styles.buttonContainer}>
-        <Button title="CUPOM" onPress={copyCupomHandler} color={colors.primary}/>
-        <Button title="LOJA" onPress={()=>{}} color={colors.primary}/>
-      </Card>
+        <MainButton onPress={copyCupomHandler}>CUPOM</MainButton>
+        <MainButton onPress={() => {}}>LOJA</MainButton>
+       </Card>
     </View>
   );
 };

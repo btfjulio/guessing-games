@@ -14,6 +14,7 @@ import ProductContainer from "../components/ProductContainer";
 import Input from "../components/Input";
 import TitleText from "../components/TitleText";
 import BodyText from "../components/BodyText";
+import MainButton from "../components/MainButton";
 import colors from "../constants/colors";
 
 const StartScreen = props => {
@@ -41,7 +42,9 @@ const StartScreen = props => {
       <Card style={styles.sumaryContainer}>
         <BodyText>Selected Product:</BodyText>
         <ProductContainer>{selectedProduct}</ProductContainer>
-        <Button title="Me leve para a loja" color={colors.accent} onPress={() => props.onSearch(selectedProduct)} />
+        <MainButton onPress={() => props.onSearch(selectedProduct)}>
+          Me leve para a loja
+        </MainButton>
       </Card>
     );
   }
