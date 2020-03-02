@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Button, Image } from "react-native";
+import { StyleSheet, View, Button, Image, Dimensions,ScrollView } from "react-native";
 
 import Card from "../components/Card";
 import colors from "../constants/colors";
@@ -8,17 +8,19 @@ import TitleText from "../components/TitleText";
 
 const EndScreen = props => {
   return (
-    <View style={styles.screen}>
-      <TitleText style={styles.title}>O melhor app de Suplementos</TitleText>
-      <View style={styles.imageContainer}>
-        <Image
-          style={styles.image}
-          source={require("../assets/photo-1549476464-37392f717541.jpeg")}
-          resizeMode="cover"
-        />
+    <ScrollView>
+      <View style={styles.screen}>
+        <TitleText style={styles.title}>O melhor app de Suplementos</TitleText>
+        <View style={styles.imageContainer}>
+          <Image
+            style={styles.image}
+            source={require("../assets/photo-1549476464-37392f717541.jpeg")}
+            resizeMode="cover"
+          />
+        </View>
+        <MainButton onPress={props.onRestart}>Fazer nova busca</MainButton>
       </View>
-      <MainButton onPress={props.onRestart}>Fazer nova busca</MainButton>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -31,7 +33,7 @@ const styles = StyleSheet.create({
     fontSize: 15
   },
   title: {
-    fontSize: 20,
+    fontSize: Dimensions.get('window').height < 400 ? 16 : 20,
     marginVertical: 10
   },
   buttonContainer: {
@@ -47,13 +49,13 @@ const styles = StyleSheet.create({
     height: "100%"
   },
   imageContainer: {
-    borderRadius: 200,
+    width: Dimensions.get("window").width * 0.7,
+    height: Dimensions.get("window").width * 0.7,
+    borderRadius: Dimensions.get("window").width * 0.7 / 2,
     borderWidth: 2,
     borderColor: "black",
-    overflow: 'hidden',
-    marginVertical: 30,
-    width: 300,
-    height: 300
+    overflow: "hidden",
+    marginVertical: Dimensions.get('window').height /  20
   }
 });
 

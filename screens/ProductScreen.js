@@ -3,9 +3,10 @@ import {
   StyleSheet,
   View,
   Text,
-  Alert
+  Alert,
+  Dimensions,
+  ScrollView
 } from "react-native";
-
 
 import Card from "../components/Card";
 import ProductContainer from "../components/ProductContainer";
@@ -16,19 +17,21 @@ const ProductScreen = props => {
   const [currentProduct, setCurrentProduct] = useState(props.userSearch);
 
   const copyCupomHandler = async cupomText => {
-        Alert.alert('Cupom copiado com sucesso!', this.cupomText);
-        props.onEndSearch(true);
+    Alert.alert("Cupom copiado com sucesso!");
+    props.onEndSearch(true);
   };
 
   return (
-    <View style={styles.screen}>
-      <Text style={styles.title}>O melhor app de Suplementos</Text>
-      <ProductContainer>{currentProduct}</ProductContainer>
-      <Card style={styles.buttonContainer}>
-        <MainButton onPress={copyCupomHandler}>CUPOM</MainButton>
-        <MainButton onPress={() => {}}>LOJA</MainButton>
-       </Card>
-    </View>
+    <ScrollView>
+      <View style={styles.screen}>
+        <Text style={styles.title}>O melhor app de Suplementos</Text>
+        <ProductContainer>{currentProduct}</ProductContainer>
+        <Card style={styles.buttonContainer}>
+          <MainButton onPress={copyCupomHandler}>CUPOM</MainButton>
+          <MainButton onPress={() => {}}>LOJA</MainButton>
+        </Card>
+      </View>
+    </ScrollView>
   );
 };
 
@@ -47,7 +50,8 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
-    width: "80%"
+    width: "80%",
+    marginTop: Dimensions.get("window").height > 600 ? 20 : 10
   },
   button: {
     width: 100

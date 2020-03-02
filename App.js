@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, SafeAreaView } from 'react-native';
 import * as Font from 'expo-font';
 // prolong the default loading screen to stay active, untill a certain task is done
 import { AppLoading } from 'expo';
@@ -67,10 +67,10 @@ export default function App() {
   };
 
   return (
-    <View style={styles.screen}>
+    <SafeAreaView style={styles.screen}>
       <Header title="SAVEWHEY" />
       {content}
-    </View>
+    </SafeAreaView>
   );
 }
 
